@@ -1,16 +1,16 @@
 import React from 'react';
-import { WiDaySunny,WiCloud,WiCloudy,WiDayRain, WiDaySnow,WiDayWindy} from 'weather-icons-react';
-import {CLOUD, CLOUDY, SUN, RAIN, SNOW, WINDY} from '../../../constants/weathers'
+import { WiDaySunny,WiCloud,WiThunderstorm,WiSnow, WiRaindrops,WiRain} from 'weather-icons-react';
+import {CLOUD, THUNDER, SUN, RAIN, SNOW, DRIZZLE} from '../../../constants/weathers'
 import PropTypes from 'prop-types'
 import './styles.css'
 
 const icons = {
     [CLOUD]: "cloud",
-    [CLOUDY]: "cloudy",
+    [THUNDER]: "thunder",
     [SUN]: "sun",
     [RAIN]: "rain",
     [SNOW]: "snow",
-    [WINDY]: "windy"
+    [DRIZZLE]: "drizzle"
 };  
 const getWeatherIcon = (weatherState) => {
     const icon = icons[weatherState];
@@ -18,11 +18,11 @@ const getWeatherIcon = (weatherState) => {
     switch(icon)
     {
         case "cloud": return <WiCloud className = "wicon" size={iconSize} color='#c6b03' />
-        case "cloudy": return <WiCloudy className = "wicon" size={iconSize} color='#fc6b03' />
+        case "thunder": return <WiThunderstorm className = "wicon" size={iconSize} color='#fc6b03' />
         case "sun": return <WiDaySunny className = "wicon" size={iconSize} color='#fc6b03' />
-        case "rain": return <WiDayRain className = "wicon" size={iconSize} color='#fc6b03' />
-        case "snow": return <WiDaySnow className = "wicon" size={iconSize} color='#fc6b03' />
-        case "winsy": return <WiDayWindy className = "wicon" size={iconSize} color='#fc6b03' />
+        case "rain": return <WiRain className = "wicon" size={iconSize} color='#fc6b03' />
+        case "snow": return <WiSnow className = "wicon" size={iconSize} color='#fc6b03' />
+        case "drizzle": return <WiRaindrops className = "wicon" size={iconSize} color='#fc6b03' />
     }
 }
 const WeatherTemperature = ({temperature, weatherState}) =>(
@@ -34,7 +34,7 @@ const WeatherTemperature = ({temperature, weatherState}) =>(
 );
 
 WeatherTemperature.propTypes = {
-    temperature: PropTypes.number.isRequired,
+    temperature: PropTypes.string.isRequired,
     weatherState: PropTypes.string.isRequired
 }
 
